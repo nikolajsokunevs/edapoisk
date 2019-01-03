@@ -1,0 +1,3 @@
+rootProject.name = 'Edapoisk'
+
+include ':app'
