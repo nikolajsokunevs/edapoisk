@@ -1,32 +1,17 @@
-import React, { Component } from 'react'
-import { Text, ImageBackground, StyleSheet } from 'react-native'
+import React from 'react'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
+import HomeContainer from './routes/home/containers/HomeContainer'
 
-class Main extends Component {
+const store = createStore(reducer)
+
+export default class Main extends React.Component {
   render() {
     return (
-      <ImageBackground
-        source={require('../assets/background.jpg')}
-        style={styles.imgBackground}
-      >
-        <Text style={styles.text}>Inside</Text>
-      </ImageBackground>
+      <Provider store={store}>
+        <HomeContainer />
+      </Provider>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  imgBackground: {
-    width: '100%',
-    height: '100%',
-    position: 'relative',
-    top: 0,
-    left: 0
-  },
-  text: {
-    fontWeight: 'bold',
-    fontSize: 18,
-    textAlign: 'center'
-  }
-})
-
-export default Main
